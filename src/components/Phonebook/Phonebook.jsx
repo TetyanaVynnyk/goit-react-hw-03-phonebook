@@ -14,14 +14,14 @@ class Phonebook extends Component {
 
   componentDidMount() {
     const contacts = JSON.parse(localStorage.getItem('my-contacts'));
-    if (contacts?.length) {
+    if (contacts) {
       this.setState({ contacts });
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
-    if (prevState.contacts) {
+    if (prevState.contacts!==contacts) {
       localStorage.setItem('my-contacts', JSON.stringify(contacts));
     }
   }
